@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Search Customer{% endblock %}
+{% block content %}
+    <h2>Search Customer</h2>
+    <form method="POST">
+        <label for="keyword">Name or Email</label>
+        <input type="text" id="keyword" name="keyword" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        {% for r in results %}
+        <tr>
+            <td>{{ r.customer_id }}</td>
+            <td>{{ r.full_name }}</td>
+            <td>{{ r.email }}</td>
+            <td>{{ r.phone }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+{% endblock %}

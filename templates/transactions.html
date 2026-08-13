@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Transactions{% endblock %}
+{% block content %}
+    <h2>Transactions for Account {{ account_id }}</h2>
+    <p>Current balance (via fn_account_balance): <strong>{{ balance }}</strong></p>
+    <table>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Description</th>
+        </tr>
+        {% for t in transactions %}
+        <tr>
+            <td>{{ t.transaction_id }}</td>
+            <td>{{ t.txn_type }}</td>
+            <td>{{ t.amount }}</td>
+            <td>{{ t.txn_date }}</td>
+            <td>{{ t.description }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
